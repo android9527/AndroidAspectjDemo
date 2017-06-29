@@ -1,0 +1,2 @@
+# AndroidAseptjDemo
+AndroidAseptjDemo 采用上海沪江公司集成的插件 https://github.com/HujiangTechnology/gradle_plugin_android_aspectjx
