@@ -1,7 +1,5 @@
 package com.example.spectjde;
 
-import android.os.Looper;
-
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -29,16 +27,15 @@ public class AsyncAspect {
 
     private void asyncMethod(final ProceedingJoinPoint joinPoint) throws Throwable {
 
+        // 使用Rxjava实现线程切换
         Flowable.create(new FlowableOnSubscribe<Object>() {
                             @Override
                             public void subscribe(FlowableEmitter<Object> e) throws Exception {
-//                                Looper.prepare();
                                 try {
                                     joinPoint.proceed();
                                 } catch (Throwable throwable) {
                                     throwable.printStackTrace();
                                 }
-//                                Looper.loop();
                             }
                         }
                 , BackpressureStrategy.BUFFER)

@@ -65,8 +65,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    @Async 
-    @OnEvent("testAsync")
+    @Async
+    @OnEvent("testAsynctestAsync")
     void testAsync() {
         Log.e(TAG, Thread.currentThread().getName());
     }

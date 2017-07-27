@@ -43,7 +43,8 @@ public class OnEventAspect {
         if (event != null) {
             String value = event.value();
 
-            Log.e(TAG, value);
+            Log.e(TAG, "收到事件" + value);
         }
+        joinPoint.proceed();
     }
 }
