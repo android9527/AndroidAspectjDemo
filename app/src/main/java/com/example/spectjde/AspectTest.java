@@ -3,11 +3,11 @@ package com.example.spectjde;
 import android.util.Log;
 import android.view.View;
 
-import com.example.androidaspectjdemo.BuildConfig;
 import com.example.androidaspectjdemo.NoDoubleClickUtils;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -20,7 +20,13 @@ public class AspectTest {
     @Before("execution(* android.app.Activity.on**(..))")
     public void onActivityMethodBefore(JoinPoint joinPoint) throws Throwable {
         String key = joinPoint.getSignature().toString();
-        Log.d(TAG, "onActivityMethodBefore: " + key);
+        Log.e(TAG, "onActivityMethodBefore: " + key);
+    }
+
+    @After("execution(* android.app.Activity.on**(..))")
+    public void onActivityMethodAfter(JoinPoint joinPoint) throws Throwable {
+        String key = joinPoint.getSignature().toString();
+        Log.e(TAG, "onActivityMethodAfter: " + key);
     }
 
 //    @Around("execution(* android.view.View.OnClickListener.onClick(..))")

@@ -1,5 +1,6 @@
 package com.example.androidaspectjdemo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -40,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+        Log.e(TAG, "onCreateBefore");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -51,17 +55,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.e(TAG, "execute click");
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
             }
         });
 
         findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
             @Override
-            @DoubleClick
             public void onClick(View v) {
                 Log.e(TAG, "execute2 click");
                 testAsync();
             }
         });
+
+        Log.e(TAG, "onCreateAfter");
     }
 
 
