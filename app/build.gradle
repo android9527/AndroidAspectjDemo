@@ -1,5 +1,10 @@
 apply plugin: 'com.android.application'
 apply plugin: 'android-aspectjx'
+//apply plugin: 'com.jakewharton.hugo'
+apply plugin: 'kotlin-android'
+apply plugin: 'android-aspectjx'
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
@@ -11,6 +16,12 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary= true
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [ moduleName : project.getName() ]
+            }
+        }
     }
     buildTypes {
         release {
@@ -18,25 +29,40 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-}
 
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        test {
+            java.srcDirs = ['src/test/java']
+            resources.srcDirs = ['src/test/resources']
+        }
+        androidTest.setRoot('src/androidTest')
+    }
+
+    lintOptions {
+        quiet true
+        abortOnError false
+    }
+}
 aspectjx {
-    includeJarFilter 'butterknife' //织入遍历butterknife
-    excludeJarFilter 'org.apache.httpcomponents'
-    excludeJarFilter '.jar' //忽略所有依赖的库
+//    include 'butterknife' //织入遍历butterknife
+    exclude 'org.apache.httpcomponents'
+    exclude 'android.support'
 }
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.4.0'
+    implementation 'com.android.support:appcompat-v7:25.4.0'
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:design:25.4.0'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:support-vector-drawable:25.4.0'
+    implementation 'com.android.support:design:25.4.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.android.support:support-vector-drawable:25.4.0'
 
-    compile 'org.aspectj:aspectjrt:1.8.10'
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    compile 'io.reactivex.rxjava2:rxjava:2.1.4'
+
+
+//    compile 'org.aspectj:aspectjrt:1.8.13'
+//    implementation project(':aspectlibrary')
+    implementation project(':aspectlibrary')
 }

@@ -1,1 +1,1 @@
-include ':app'
+include ':app', ':javassistdemo', ':javassistplugin', ':aspectlibrary', ':library', ':AspectJX-Demo', ':apt_annotations', ':apt_compiler', ':apt_app', ':apt_api'

@@ -55,3 +55,7 @@ freeline/
 freeline_project_description.json
 /.gradle/
 /.idea/
+/app/debug/
+app/debug/
+com/
+repo/

@@ -11,20 +11,27 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.spectjde.annotation.Async;
-import com.example.spectjde.annotation.DoubleClick;
 import com.example.spectjde.annotation.OnEvent;
 
-public class MainActivity extends AppCompatActivity {
+//import hugo.weaving.DebugLog;
+
+//import hugo.weaving.DebugLog;
+
+public class MainActivity extends AppCompatActivity
+{
 
     private static final String TAG = "MainActivity";
     private TextView mTextMessage;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+            = new BottomNavigationView.OnNavigationItemSelectedListener()
+    {
 
         @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
+        public boolean onNavigationItemSelected(@NonNull MenuItem item)
+        {
+            switch (item.getItemId())
+            {
                 case R.id.navigation_home:
                     mTextMessage.setText(R.string.title_home);
                     return true;
@@ -40,10 +47,9 @@ public class MainActivity extends AppCompatActivity {
     };
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
 
-
-        Log.e(TAG, "onCreateBefore");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -51,30 +57,40 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.button).setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 Log.e(TAG, "execute click");
                 startActivity(new Intent(MainActivity.this, LoginActivity.class));
             }
         });
 
-        findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.button2).setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 Log.e(TAG, "execute2 click");
                 testAsync();
             }
         });
 
-        Log.e(TAG, "onCreateAfter");
+        debugLog();
     }
 
-
     @Async
-    @OnEvent("testAsynctestAsync")
-    void testAsync() {
+    @OnEvent("testAsync")
+    void testAsync()
+    {
         Log.e(TAG, Thread.currentThread().getName());
+    }
+
+//        @DebugLog
+    void debugLog()
+    {
+
     }
 
 }
