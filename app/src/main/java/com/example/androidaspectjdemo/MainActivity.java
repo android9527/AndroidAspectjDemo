@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.spectjde.annotation.Async;
+import com.example.spectjde.annotation.DoubleClick;
 import com.example.spectjde.annotation.OnEvent;
 
 //import hugo.weaving.DebugLog;
@@ -87,7 +88,7 @@ public class MainActivity extends AppCompatActivity
         Log.e(TAG, Thread.currentThread().getName());
     }
 
-//        @DebugLog
+    @DoubleClick
     void debugLog()
     {
 

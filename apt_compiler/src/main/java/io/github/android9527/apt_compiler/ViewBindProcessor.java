@@ -34,7 +34,8 @@ import static java.lang.reflect.Modifier.PRIVATE;
 import static java.lang.reflect.Modifier.STATIC;
 
 /**
- * 注解处理器
+ * 要把处理器注册到javac中，需要打包一个特定的文件javax.annotation.processing.Processor到META-INF/services路径下
+ * AutoService 会自动生成配置文件，注册处理器
  */
 @AutoService(Processor.class)
 public class ViewBindProcessor extends AbstractProcessor {

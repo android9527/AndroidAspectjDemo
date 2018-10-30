@@ -4,12 +4,8 @@ import com.android.build.gradle.AppExtension
 import com.android.build.gradle.AppPlugin
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-/**
- * @author：xinyu.zhou
- * @version: 2018/6/6
- * @ClassName:
- * @Description: ${todo}(这里用一句话描述这个类的作用)
- */
+
+
 public class MyPlugin implements Plugin<Project> {
 
     void apply(Project project) {
@@ -22,7 +18,7 @@ public class MyPlugin implements Plugin<Project> {
         android.registerTransform(classTransform)
 
 
-//        createGradleTask(project, android)
+        createGradleTask(project, android)
 
         System.out.println("------------------结束----------------------");
     }

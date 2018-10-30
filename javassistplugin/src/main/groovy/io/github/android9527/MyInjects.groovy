@@ -14,13 +14,6 @@ import javassist.CtNewMethod;
 
 import static org.codehaus.groovy.runtime.DefaultGroovyMethods.println
 
-/**
- * @author ： x i n y u . z h o u
- * @version: 2018/6/6
- * @ClassName:
- * @Description: ${todo}(这里用一句话描述这个类的作用)
- */
-
 public class MyInjects {
     //初始化类池
     private final

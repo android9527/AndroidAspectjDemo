@@ -26,6 +26,7 @@ public class AspectTest {
 //        String key = joinPoint.getSignature().toString();
 //        Log.e(TAG, "onActivityMethodAfter: " + key);
 //    }
+
     @Around("execution(* android.app.Activity.on**(..))")
     public void onActivityMethodAfter(ProceedingJoinPoint joinPoint) throws Throwable {
         String key = joinPoint.getSignature().toString();

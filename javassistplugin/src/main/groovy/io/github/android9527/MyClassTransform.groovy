@@ -6,13 +6,6 @@ import org.apache.commons.codec.digest.DigestUtils
 import org.apache.commons.io.FileUtils
 import org.gradle.api.Project
 
-/**
- * @author ： x i n y u . z h o u
- * @version: 2018/6/6
- * @ClassName:
- * @Description: ${todo}(这里用一句话描述这个类的作用)
- */
-
 public class MyClassTransform extends Transform {
 
     private Project mProject;
